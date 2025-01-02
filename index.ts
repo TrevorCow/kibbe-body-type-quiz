@@ -233,6 +233,12 @@ function display_results(results: Results) {
         return d;
     }
 
+    function remove_children(parent: HTMLElement): void {
+        while (parent.firstChild) {
+            parent.removeChild(parent.lastChild!);
+        }
+    }
+
     const results_element = document.getElementById("results")!;
     const overview_element = document.getElementById("overview")!;
     const bone_structure_of_the_body_element = document.getElementById("bone_structure_of_the_body")!;
@@ -240,6 +246,12 @@ function display_results(results: Results) {
     const flesh_of_the_body_element = document.getElementById("flesh_of_the_body")!;
     const facial_features_element = document.getElementById("facial_features")!;
 
+    // Clean old results
+    remove_children(overview_element);
+    remove_children(bone_structure_of_the_body_element);
+    remove_children(facial_bones_element);
+    remove_children(flesh_of_the_body_element);
+    remove_children(facial_features_element);
 
     overview_element.appendChild(d(results.bone_structure_of_the_body.join(""), "body_color"));
     overview_element.appendChild(d(results.flesh_of_the_body.join(""), "body_color"));

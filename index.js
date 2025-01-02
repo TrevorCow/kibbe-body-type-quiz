@@ -126,9 +126,9 @@ export function make_questions(parent_element) {
             qanswer_radio.name = "question" + q_num;
             qanswer_radio.value = String.fromCharCode(answer_letter_prefix);
             qanswer_radio.required = true;
-            if (answer_letter_prefix === 65) {
-                qanswer_radio.checked = true;
-            }
+            // if (answer_letter_prefix === 65) { // Debug sets all answers to A
+            //     qanswer_radio.checked = true;
+            // }
             const qanswer_label = document.createElement("label");
             qanswer_label.htmlFor = id;
             qanswer_label.innerText = answer;
@@ -198,12 +198,23 @@ function display_results(results) {
         d.className = clazz;
         return d;
     }
+    function remove_children(parent) {
+        while (parent.firstChild) {
+            parent.removeChild(parent.lastChild);
+        }
+    }
     const results_element = document.getElementById("results");
     const overview_element = document.getElementById("overview");
     const bone_structure_of_the_body_element = document.getElementById("bone_structure_of_the_body");
     const facial_bones_element = document.getElementById("facial_bones");
     const flesh_of_the_body_element = document.getElementById("flesh_of_the_body");
     const facial_features_element = document.getElementById("facial_features");
+    // Clean old results
+    remove_children(overview_element);
+    remove_children(bone_structure_of_the_body_element);
+    remove_children(facial_bones_element);
+    remove_children(flesh_of_the_body_element);
+    remove_children(facial_features_element);
     overview_element.appendChild(d(results.bone_structure_of_the_body.join(""), "body_color"));
     overview_element.appendChild(d(results.flesh_of_the_body.join(""), "body_color"));
     overview_element.appendChild(d(results.facial_bones.join(""), "facial_color"));
