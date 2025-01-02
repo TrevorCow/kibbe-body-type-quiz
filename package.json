@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "php -t . -S 0.0.0.0:8000"
+    "dev": "php -t . -S 0.0.0.0:8000",
+    "build": "tsc"
   },
   "private": "true",
   "dependencies": {
