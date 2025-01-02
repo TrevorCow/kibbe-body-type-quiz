@@ -148,9 +148,9 @@ export function make_questions(parent_element: HTMLElement): void {
             qanswer_radio.value = String.fromCharCode(answer_letter_prefix);
             qanswer_radio.required = true;
 
-            if (answer_letter_prefix === 65) {
-                qanswer_radio.checked = true;
-            }
+            // if (answer_letter_prefix === 65) { // Debug sets all answers to A
+            //     qanswer_radio.checked = true;
+            // }
 
             const qanswer_label = document.createElement("label");
             qanswer_label.htmlFor = id;
